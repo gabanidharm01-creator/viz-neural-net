@@ -32,7 +32,7 @@ export type ApiErrorKind =
 
 export class ApiError extends Error {
   kind: ApiErrorKind;
-  status?: number;
+  status?: number | undefined;
 
   constructor(kind: ApiErrorKind, message: string, status?: number) {
     super(message);
