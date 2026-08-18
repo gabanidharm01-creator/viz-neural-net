@@ -63,7 +63,12 @@ export function AiTutorPanel() {
     }
   }, []);
 
-  useEffect(() => onAskTutor((q) => void ask(q)), [ask]);
+  useEffect(() => {
+    const unsubscribe = onAskTutor((q) => void ask(q));
+    return () => {
+      unsubscribe();
+    };
+  }, [ask]);
 
   const requestVisualization = async () => {
     const trimmed = vizPrompt.trim();
