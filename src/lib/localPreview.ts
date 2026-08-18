@@ -29,7 +29,7 @@ const round = (n: number) => Math.round(n * 1000) / 1000;
 
 function pad(image: Matrix, padding: number): Matrix {
   if (padding <= 0) return image;
-  const width = image[0].length + padding * 2;
+  const width = image[0]!.length + padding * 2;
   const row = () => Array.from({ length: width }, () => 0);
   return [
     ...Array.from({ length: padding }, row),
@@ -46,9 +46,9 @@ export function localConvolution(
 ): ConvolutionResult {
   const padded = pad(image, padding);
   const kh = kernel.length;
-  const kw = kernel[0].length;
+  const kw = kernel[0]!.length;
   const outH = Math.floor((padded.length - kh) / stride) + 1;
-  const outW = Math.floor((padded[0].length - kw) / stride) + 1;
+  const outW = Math.floor((padded[0]!.length - kw) / stride) + 1;
 
   const output: Matrix = Array.from({ length: outH }, () => Array(outW).fill(0));
   const running: (number | null)[][] = Array.from({ length: outH }, () => Array(outW).fill(null));
@@ -64,8 +64,8 @@ export function localConvolution(
         const patchRow: number[] = [];
         const productRow: number[] = [];
         for (let j = 0; j < kw; j++) {
-          const v = padded[r * stride + i][c * stride + j];
-          const p = v * kernel[i][j];
+          const v = padded[r * stride + i]![c * stride + j]!;
+          const p = v * kernel[i]![j]!;
           patchRow.push(v);
           productRow.push(round(p));
           sum += p;
@@ -73,8 +73,8 @@ export function localConvolution(
         patch.push(patchRow);
         products.push(productRow);
       }
-      output[r][c] = round(sum);
-      running[r][c] = round(sum);
+      output[r]![c] = round(sum);
+      running[r]![c] = round(sum);
       steps.push({
         index: index++,
         out_row: r,
@@ -89,7 +89,7 @@ export function localConvolution(
   }
 
   return {
-    input_shape: [image.length, image[0].length],
+    input_shape: [image.length, image[0]!.length],
     kernel_shape: [kh, kw],
     stride,
     padding,
@@ -114,7 +114,7 @@ export function localRelu(image: Matrix): ReluResult {
 export function localMaxPooling(image: Matrix, window: [number, number], stride: number): PoolingResult {
   const [wh, ww] = window;
   const outH = Math.floor((image.length - wh) / stride) + 1;
-  const outW = Math.floor((image[0].length - ww) / stride) + 1;
+  const outW = Math.floor((image[0]!.length - ww) / stride) + 1;
   const output: Matrix = Array.from({ length: outH }, () => Array(outW).fill(0));
   const running: (number | null)[][] = Array.from({ length: outH }, () => Array(outW).fill(null));
   const steps: PoolingStep[] = [];
@@ -128,7 +128,7 @@ export function localMaxPooling(image: Matrix, window: [number, number], stride:
       for (let i = 0; i < wh; i++) {
         const regionRow: number[] = [];
         for (let j = 0; j < ww; j++) {
-          const v = image[r * stride + i][c * stride + j];
+          const v = image[r * stride + i]![c * stride + j]!;
           regionRow.push(v);
           if (v > max) {
             max = v;
@@ -137,8 +137,8 @@ export function localMaxPooling(image: Matrix, window: [number, number], stride:
         }
         region.push(regionRow);
       }
-      output[r][c] = round(max);
-      running[r][c] = round(max);
+      output[r]![c] = round(max);
+      running[r]![c] = round(max);
       steps.push({
         index: index++,
         out_row: r,
@@ -152,7 +152,7 @@ export function localMaxPooling(image: Matrix, window: [number, number], stride:
   }
 
   return {
-    input_shape: [image.length, image[0].length],
+    input_shape: [image.length, image[0]!.length],
     window,
     stride,
     output_shape: [outH, outW],
@@ -249,7 +249,7 @@ export function localUNetArchitecture(opts: {
       level,
       encoder_shape: encoder.shape,
       decoder_shape: decoderShape,
-      concatenated_shape: [...spatial(size), encoder.shape[dimensions] + features],
+      concatenated_shape: [...spatial(size), encoder.shape[dimensions]! + features],
       purpose:
         "Restores the high-frequency spatial detail lost during downsampling by concatenating the encoder feature map onto the upsampled decoder feature map along the channel axis.",
     });
@@ -273,9 +273,9 @@ export function localMetrics(groundTruth: Matrix, prediction: Matrix): MetricsRe
   let fn = 0;
   let tn = 0;
   for (let r = 0; r < groundTruth.length; r++) {
-    for (let c = 0; c < groundTruth[r].length; c++) {
-      const g = groundTruth[r][c] > 0.5 ? 1 : 0;
-      const p = prediction[r][c] > 0.5 ? 1 : 0;
+    for (let c = 0; c < groundTruth[r]!.length; c++) {
+      const g = groundTruth[r]![c]! > 0.5 ? 1 : 0;
+      const p = prediction[r]![c]! > 0.5 ? 1 : 0;
       if (g === 1 && p === 1) tp++;
       else if (g === 0 && p === 1) fp++;
       else if (g === 1 && p === 0) fn++;
