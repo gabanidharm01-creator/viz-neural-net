@@ -10,33 +10,206 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CnnWorkflowRouteImport } from './routes/cnn-workflow'
+import { Route as ConvolutionRouteImport } from './routes/convolution'
+import { Route as MetricsRouteImport } from './routes/metrics'
+import { Route as ModelInspectorRouteImport } from './routes/model-inspector'
+import { Route as NnunetRouteImport } from './routes/nnunet'
+import { Route as PlaygroundRouteImport } from './routes/playground'
+import { Route as PoolingRouteImport } from './routes/pooling'
+import { Route as ProgressRouteImport } from './routes/progress'
+import { Route as ReluRouteImport } from './routes/relu'
+import { Route as TutorRouteImport } from './routes/tutor'
+import { Route as UnetRouteImport } from './routes/unet'
+import { Route as Unet2dRouteImport } from './routes/unet-2d'
+import { Route as Unet3dRouteImport } from './routes/unet-3d'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CnnWorkflowRoute = CnnWorkflowRouteImport.update({
+  id: '/cnn-workflow',
+  path: '/cnn-workflow',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConvolutionRoute = ConvolutionRouteImport.update({
+  id: '/convolution',
+  path: '/convolution',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MetricsRoute = MetricsRouteImport.update({
+  id: '/metrics',
+  path: '/metrics',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ModelInspectorRoute = ModelInspectorRouteImport.update({
+  id: '/model-inspector',
+  path: '/model-inspector',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NnunetRoute = NnunetRouteImport.update({
+  id: '/nnunet',
+  path: '/nnunet',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PlaygroundRoute = PlaygroundRouteImport.update({
+  id: '/playground',
+  path: '/playground',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PoolingRoute = PoolingRouteImport.update({
+  id: '/pooling',
+  path: '/pooling',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ProgressRoute = ProgressRouteImport.update({
+  id: '/progress',
+  path: '/progress',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReluRoute = ReluRouteImport.update({
+  id: '/relu',
+  path: '/relu',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TutorRoute = TutorRouteImport.update({
+  id: '/tutor',
+  path: '/tutor',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UnetRoute = UnetRouteImport.update({
+  id: '/unet',
+  path: '/unet',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Unet2dRoute = Unet2dRouteImport.update({
+  id: '/unet-2d',
+  path: '/unet-2d',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Unet3dRoute = Unet3dRouteImport.update({
+  id: '/unet-3d',
+  path: '/unet-3d',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/cnn-workflow': typeof CnnWorkflowRoute
+  '/convolution': typeof ConvolutionRoute
+  '/metrics': typeof MetricsRoute
+  '/model-inspector': typeof ModelInspectorRoute
+  '/nnunet': typeof NnunetRoute
+  '/playground': typeof PlaygroundRoute
+  '/pooling': typeof PoolingRoute
+  '/progress': typeof ProgressRoute
+  '/relu': typeof ReluRoute
+  '/tutor': typeof TutorRoute
+  '/unet': typeof UnetRoute
+  '/unet-2d': typeof Unet2dRoute
+  '/unet-3d': typeof Unet3dRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/cnn-workflow': typeof CnnWorkflowRoute
+  '/convolution': typeof ConvolutionRoute
+  '/metrics': typeof MetricsRoute
+  '/model-inspector': typeof ModelInspectorRoute
+  '/nnunet': typeof NnunetRoute
+  '/playground': typeof PlaygroundRoute
+  '/pooling': typeof PoolingRoute
+  '/progress': typeof ProgressRoute
+  '/relu': typeof ReluRoute
+  '/tutor': typeof TutorRoute
+  '/unet': typeof UnetRoute
+  '/unet-2d': typeof Unet2dRoute
+  '/unet-3d': typeof Unet3dRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/cnn-workflow': typeof CnnWorkflowRoute
+  '/convolution': typeof ConvolutionRoute
+  '/metrics': typeof MetricsRoute
+  '/model-inspector': typeof ModelInspectorRoute
+  '/nnunet': typeof NnunetRoute
+  '/playground': typeof PlaygroundRoute
+  '/pooling': typeof PoolingRoute
+  '/progress': typeof ProgressRoute
+  '/relu': typeof ReluRoute
+  '/tutor': typeof TutorRoute
+  '/unet': typeof UnetRoute
+  '/unet-2d': typeof Unet2dRoute
+  '/unet-3d': typeof Unet3dRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/cnn-workflow'
+    | '/convolution'
+    | '/metrics'
+    | '/model-inspector'
+    | '/nnunet'
+    | '/playground'
+    | '/pooling'
+    | '/progress'
+    | '/relu'
+    | '/tutor'
+    | '/unet'
+    | '/unet-2d'
+    | '/unet-3d'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/cnn-workflow'
+    | '/convolution'
+    | '/metrics'
+    | '/model-inspector'
+    | '/nnunet'
+    | '/playground'
+    | '/pooling'
+    | '/progress'
+    | '/relu'
+    | '/tutor'
+    | '/unet'
+    | '/unet-2d'
+    | '/unet-3d'
+  id:
+    | '__root__'
+    | '/'
+    | '/cnn-workflow'
+    | '/convolution'
+    | '/metrics'
+    | '/model-inspector'
+    | '/nnunet'
+    | '/playground'
+    | '/pooling'
+    | '/progress'
+    | '/relu'
+    | '/tutor'
+    | '/unet'
+    | '/unet-2d'
+    | '/unet-3d'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CnnWorkflowRoute: typeof CnnWorkflowRoute
+  ConvolutionRoute: typeof ConvolutionRoute
+  MetricsRoute: typeof MetricsRoute
+  ModelInspectorRoute: typeof ModelInspectorRoute
+  NnunetRoute: typeof NnunetRoute
+  PlaygroundRoute: typeof PlaygroundRoute
+  PoolingRoute: typeof PoolingRoute
+  ProgressRoute: typeof ProgressRoute
+  ReluRoute: typeof ReluRoute
+  TutorRoute: typeof TutorRoute
+  UnetRoute: typeof UnetRoute
+  Unet2dRoute: typeof Unet2dRoute
+  Unet3dRoute: typeof Unet3dRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +221,115 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cnn-workflow': {
+      id: '/cnn-workflow'
+      path: '/cnn-workflow'
+      fullPath: '/cnn-workflow'
+      preLoaderRoute: typeof CnnWorkflowRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/convolution': {
+      id: '/convolution'
+      path: '/convolution'
+      fullPath: '/convolution'
+      preLoaderRoute: typeof ConvolutionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/metrics': {
+      id: '/metrics'
+      path: '/metrics'
+      fullPath: '/metrics'
+      preLoaderRoute: typeof MetricsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/model-inspector': {
+      id: '/model-inspector'
+      path: '/model-inspector'
+      fullPath: '/model-inspector'
+      preLoaderRoute: typeof ModelInspectorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/nnunet': {
+      id: '/nnunet'
+      path: '/nnunet'
+      fullPath: '/nnunet'
+      preLoaderRoute: typeof NnunetRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/playground': {
+      id: '/playground'
+      path: '/playground'
+      fullPath: '/playground'
+      preLoaderRoute: typeof PlaygroundRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/pooling': {
+      id: '/pooling'
+      path: '/pooling'
+      fullPath: '/pooling'
+      preLoaderRoute: typeof PoolingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/progress': {
+      id: '/progress'
+      path: '/progress'
+      fullPath: '/progress'
+      preLoaderRoute: typeof ProgressRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/relu': {
+      id: '/relu'
+      path: '/relu'
+      fullPath: '/relu'
+      preLoaderRoute: typeof ReluRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tutor': {
+      id: '/tutor'
+      path: '/tutor'
+      fullPath: '/tutor'
+      preLoaderRoute: typeof TutorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/unet': {
+      id: '/unet'
+      path: '/unet'
+      fullPath: '/unet'
+      preLoaderRoute: typeof UnetRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/unet-2d': {
+      id: '/unet-2d'
+      path: '/unet-2d'
+      fullPath: '/unet-2d'
+      preLoaderRoute: typeof Unet2dRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/unet-3d': {
+      id: '/unet-3d'
+      path: '/unet-3d'
+      fullPath: '/unet-3d'
+      preLoaderRoute: typeof Unet3dRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CnnWorkflowRoute: CnnWorkflowRoute,
+  ConvolutionRoute: ConvolutionRoute,
+  MetricsRoute: MetricsRoute,
+  ModelInspectorRoute: ModelInspectorRoute,
+  NnunetRoute: NnunetRoute,
+  PlaygroundRoute: PlaygroundRoute,
+  PoolingRoute: PoolingRoute,
+  ProgressRoute: ProgressRoute,
+  ReluRoute: ReluRoute,
+  TutorRoute: TutorRoute,
+  UnetRoute: UnetRoute,
+  Unet2dRoute: Unet2dRoute,
+  Unet3dRoute: Unet3dRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

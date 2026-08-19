@@ -1,6 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { createFileRoute as _unused } from "@tanstack/react-router";
 import { PageHeader, VizPanel } from "@/components/VizPanel";
 import { MatrixGrid } from "@/components/viz/MatrixGrid";
 import { Button } from "@/components/ui/button";
@@ -10,8 +9,6 @@ import { Badge } from "@/components/ui/badge";
 import { KERNELS, useLabImage } from "@/lib/imageStore";
 import { useRegisterVizContext } from "@/lib/tutor";
 import { ModuleCompleteToggle } from "@/components/ModuleCompleteToggle";
-
-void _unused;
 
 export const Route = createFileRoute("/playground")({
   head: () => ({
