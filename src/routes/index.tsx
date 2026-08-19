@@ -98,12 +98,12 @@ function Dashboard() {
       {/* Hero */}
       <section className="aurora glass relative overflow-hidden p-6 lg:p-10">
         <div className="grid-bg pointer-events-none absolute inset-0 opacity-40" aria-hidden />
-        <div className="relative grid items-center gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)]">
+        <div className="relative grid items-center gap-8 2xl:grid-cols-[minmax(0,1.15fr)_minmax(0,1fr)]">
           <div>
             <Badge variant="outline" className="gap-1.5 font-mono text-[10px] uppercase tracking-widest">
               <Sparkles className="size-3" /> interactive deep-learning lab
             </Badge>
-            <h1 className="mt-4 text-4xl font-bold leading-tight tracking-tight lg:text-5xl">
+            <h1 className="mt-4 text-balance text-3xl font-bold leading-tight tracking-tight sm:text-4xl xl:text-5xl">
               See how a neural network <span className="gradient-text">actually sees</span> a
               medical image
             </h1>
@@ -125,7 +125,7 @@ function Dashboard() {
             </div>
           </div>
 
-          <div className="float-slow relative h-56 lg:h-72">
+          <div className="float-slow relative h-44 sm:h-56 xl:h-64">
             <NeuralHero />
           </div>
         </div>
