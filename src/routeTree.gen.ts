@@ -10,11 +10,34 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CnnWorkflowRouteImport } from './routes/cnn-workflow'
+import { Route as ConvolutionRouteImport } from './routes/convolution'
+import { Route as MetricsRouteImport } from './routes/metrics'
 import { Route as PlaygroundRouteImport } from './routes/playground'
+import { Route as PoolingRouteImport } from './routes/pooling'
+import { Route as ReluRouteImport } from './routes/relu'
+import { Route as UnetRouteImport } from './routes/unet'
+import { Route as Unet2dRouteImport } from './routes/unet-2d'
+import { Route as Unet3dRouteImport } from './routes/unet-3d'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CnnWorkflowRoute = CnnWorkflowRouteImport.update({
+  id: '/cnn-workflow',
+  path: '/cnn-workflow',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ConvolutionRoute = ConvolutionRouteImport.update({
+  id: '/convolution',
+  path: '/convolution',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MetricsRoute = MetricsRouteImport.update({
+  id: '/metrics',
+  path: '/metrics',
   getParentRoute: () => rootRouteImport,
 } as any)
 const PlaygroundRoute = PlaygroundRouteImport.update({
@@ -22,31 +45,119 @@ const PlaygroundRoute = PlaygroundRouteImport.update({
   path: '/playground',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PoolingRoute = PoolingRouteImport.update({
+  id: '/pooling',
+  path: '/pooling',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ReluRoute = ReluRouteImport.update({
+  id: '/relu',
+  path: '/relu',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const UnetRoute = UnetRouteImport.update({
+  id: '/unet',
+  path: '/unet',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Unet2dRoute = Unet2dRouteImport.update({
+  id: '/unet-2d',
+  path: '/unet-2d',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const Unet3dRoute = Unet3dRouteImport.update({
+  id: '/unet-3d',
+  path: '/unet-3d',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/cnn-workflow': typeof CnnWorkflowRoute
+  '/convolution': typeof ConvolutionRoute
+  '/metrics': typeof MetricsRoute
   '/playground': typeof PlaygroundRoute
+  '/pooling': typeof PoolingRoute
+  '/relu': typeof ReluRoute
+  '/unet': typeof UnetRoute
+  '/unet-2d': typeof Unet2dRoute
+  '/unet-3d': typeof Unet3dRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/cnn-workflow': typeof CnnWorkflowRoute
+  '/convolution': typeof ConvolutionRoute
+  '/metrics': typeof MetricsRoute
   '/playground': typeof PlaygroundRoute
+  '/pooling': typeof PoolingRoute
+  '/relu': typeof ReluRoute
+  '/unet': typeof UnetRoute
+  '/unet-2d': typeof Unet2dRoute
+  '/unet-3d': typeof Unet3dRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/cnn-workflow': typeof CnnWorkflowRoute
+  '/convolution': typeof ConvolutionRoute
+  '/metrics': typeof MetricsRoute
   '/playground': typeof PlaygroundRoute
+  '/pooling': typeof PoolingRoute
+  '/relu': typeof ReluRoute
+  '/unet': typeof UnetRoute
+  '/unet-2d': typeof Unet2dRoute
+  '/unet-3d': typeof Unet3dRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/playground'
+  fullPaths:
+    | '/'
+    | '/cnn-workflow'
+    | '/convolution'
+    | '/metrics'
+    | '/playground'
+    | '/pooling'
+    | '/relu'
+    | '/unet'
+    | '/unet-2d'
+    | '/unet-3d'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/playground'
-  id: '__root__' | '/' | '/playground'
+  to:
+    | '/'
+    | '/cnn-workflow'
+    | '/convolution'
+    | '/metrics'
+    | '/playground'
+    | '/pooling'
+    | '/relu'
+    | '/unet'
+    | '/unet-2d'
+    | '/unet-3d'
+  id:
+    | '__root__'
+    | '/'
+    | '/cnn-workflow'
+    | '/convolution'
+    | '/metrics'
+    | '/playground'
+    | '/pooling'
+    | '/relu'
+    | '/unet'
+    | '/unet-2d'
+    | '/unet-3d'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CnnWorkflowRoute: typeof CnnWorkflowRoute
+  ConvolutionRoute: typeof ConvolutionRoute
+  MetricsRoute: typeof MetricsRoute
   PlaygroundRoute: typeof PlaygroundRoute
+  PoolingRoute: typeof PoolingRoute
+  ReluRoute: typeof ReluRoute
+  UnetRoute: typeof UnetRoute
+  Unet2dRoute: typeof Unet2dRoute
+  Unet3dRoute: typeof Unet3dRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -58,6 +169,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/cnn-workflow': {
+      id: '/cnn-workflow'
+      path: '/cnn-workflow'
+      fullPath: '/cnn-workflow'
+      preLoaderRoute: typeof CnnWorkflowRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/convolution': {
+      id: '/convolution'
+      path: '/convolution'
+      fullPath: '/convolution'
+      preLoaderRoute: typeof ConvolutionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/metrics': {
+      id: '/metrics'
+      path: '/metrics'
+      fullPath: '/metrics'
+      preLoaderRoute: typeof MetricsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/playground': {
       id: '/playground'
       path: '/playground'
@@ -65,12 +197,55 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof PlaygroundRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/pooling': {
+      id: '/pooling'
+      path: '/pooling'
+      fullPath: '/pooling'
+      preLoaderRoute: typeof PoolingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/relu': {
+      id: '/relu'
+      path: '/relu'
+      fullPath: '/relu'
+      preLoaderRoute: typeof ReluRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/unet': {
+      id: '/unet'
+      path: '/unet'
+      fullPath: '/unet'
+      preLoaderRoute: typeof UnetRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/unet-2d': {
+      id: '/unet-2d'
+      path: '/unet-2d'
+      fullPath: '/unet-2d'
+      preLoaderRoute: typeof Unet2dRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/unet-3d': {
+      id: '/unet-3d'
+      path: '/unet-3d'
+      fullPath: '/unet-3d'
+      preLoaderRoute: typeof Unet3dRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CnnWorkflowRoute: CnnWorkflowRoute,
+  ConvolutionRoute: ConvolutionRoute,
+  MetricsRoute: MetricsRoute,
   PlaygroundRoute: PlaygroundRoute,
+  PoolingRoute: PoolingRoute,
+  ReluRoute: ReluRoute,
+  UnetRoute: UnetRoute,
+  Unet2dRoute: Unet2dRoute,
+  Unet3dRoute: Unet3dRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
