@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { PageHeader, VizPanel } from "@/components/VizPanel";
 import { UNetVisualizer } from "@/components/viz/UNetVisualizer";
 import { VolumeViewer } from "@/components/viz/VolumeViewer";
+import { VoxelCube } from "@/components/viz/VoxelCube";
 import { ModuleCompleteToggle } from "@/components/ModuleCompleteToggle";
 
 export const Route = createFileRoute("/unet-3d")({
@@ -31,6 +32,17 @@ function UNet3DPage() {
       </PageHeader>
 
       <div className="space-y-4">
+        <VizPanel title="Why volumes are different" subtitle="Three axes, one tensor" topic="volumetric data">
+          <div className="grid items-center gap-4 md:grid-cols-[18rem_minmax(0,1fr)]">
+            <VoxelCube />
+            <p className="text-sm text-muted-foreground">
+              A 2D network sees one slice at a time and can miss structure that only appears across
+              slices. A 3D U-Net reads a cube of voxels, so it understands depth — at the cost of far
+              more memory per training patch.
+            </p>
+          </div>
+        </VizPanel>
+
         <VizPanel title="Volume viewer" subtitle="Axial · coronal · sagittal" topic="orthogonal volume navigation">
           <VolumeViewer />
         </VizPanel>
