@@ -21,13 +21,13 @@ import { useRegisterVizContext } from "@/lib/tutor";
 export const Route = createFileRoute("/dashboard")({
   head: () => ({
     meta: [
-      { title: "NeuroVision Lab — Learn U-Net & nnU-Net Visually" },
+      { title: "Dashboard — NeuroVision Lab" },
       {
         name: "description",
         content:
           "An interactive dashboard for learning convolution, pooling, U-Net skip connections, 3D U-Net and the nnU-Net v2 pipeline.",
       },
-      { property: "og:title", content: "NeuroVision Lab — Learn U-Net & nnU-Net Visually" },
+      { property: "og:title", content: "Dashboard — NeuroVision Lab" },
       {
         property: "og:description",
         content: "Step through real tensor values from CNN basics to the nnU-Net v2 pipeline.",
