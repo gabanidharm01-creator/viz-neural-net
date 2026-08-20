@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CnnWorkflowRouteImport } from './routes/cnn-workflow'
 import { Route as ConvolutionRouteImport } from './routes/convolution'
+import { Route as DashboardRouteImport } from './routes/dashboard'
 import { Route as MetricsRouteImport } from './routes/metrics'
 import { Route as ModelInspectorRouteImport } from './routes/model-inspector'
 import { Route as NnunetRouteImport } from './routes/nnunet'
@@ -37,6 +38,11 @@ const CnnWorkflowRoute = CnnWorkflowRouteImport.update({
 const ConvolutionRoute = ConvolutionRouteImport.update({
   id: '/convolution',
   path: '/convolution',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const DashboardRoute = DashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MetricsRoute = MetricsRouteImport.update({
@@ -99,6 +105,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/cnn-workflow': typeof CnnWorkflowRoute
   '/convolution': typeof ConvolutionRoute
+  '/dashboard': typeof DashboardRoute
   '/metrics': typeof MetricsRoute
   '/model-inspector': typeof ModelInspectorRoute
   '/nnunet': typeof NnunetRoute
@@ -115,6 +122,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/cnn-workflow': typeof CnnWorkflowRoute
   '/convolution': typeof ConvolutionRoute
+  '/dashboard': typeof DashboardRoute
   '/metrics': typeof MetricsRoute
   '/model-inspector': typeof ModelInspectorRoute
   '/nnunet': typeof NnunetRoute
@@ -132,6 +140,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/cnn-workflow': typeof CnnWorkflowRoute
   '/convolution': typeof ConvolutionRoute
+  '/dashboard': typeof DashboardRoute
   '/metrics': typeof MetricsRoute
   '/model-inspector': typeof ModelInspectorRoute
   '/nnunet': typeof NnunetRoute
@@ -150,6 +159,7 @@ export interface FileRouteTypes {
     | '/'
     | '/cnn-workflow'
     | '/convolution'
+    | '/dashboard'
     | '/metrics'
     | '/model-inspector'
     | '/nnunet'
@@ -166,6 +176,7 @@ export interface FileRouteTypes {
     | '/'
     | '/cnn-workflow'
     | '/convolution'
+    | '/dashboard'
     | '/metrics'
     | '/model-inspector'
     | '/nnunet'
@@ -182,6 +193,7 @@ export interface FileRouteTypes {
     | '/'
     | '/cnn-workflow'
     | '/convolution'
+    | '/dashboard'
     | '/metrics'
     | '/model-inspector'
     | '/nnunet'
@@ -199,6 +211,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CnnWorkflowRoute: typeof CnnWorkflowRoute
   ConvolutionRoute: typeof ConvolutionRoute
+  DashboardRoute: typeof DashboardRoute
   MetricsRoute: typeof MetricsRoute
   ModelInspectorRoute: typeof ModelInspectorRoute
   NnunetRoute: typeof NnunetRoute
@@ -233,6 +246,13 @@ declare module '@tanstack/react-router' {
       path: '/convolution'
       fullPath: '/convolution'
       preLoaderRoute: typeof ConvolutionRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/dashboard': {
+      id: '/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof DashboardRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/metrics': {
@@ -319,6 +339,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CnnWorkflowRoute: CnnWorkflowRoute,
   ConvolutionRoute: ConvolutionRoute,
+  DashboardRoute: DashboardRoute,
   MetricsRoute: MetricsRoute,
   ModelInspectorRoute: ModelInspectorRoute,
   NnunetRoute: NnunetRoute,

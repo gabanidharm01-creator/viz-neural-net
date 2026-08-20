@@ -18,7 +18,7 @@ import { API_BASE_URL } from "@/lib/api";
 import { MODULES, useProgress } from "@/lib/progress";
 import { useRegisterVizContext } from "@/lib/tutor";
 
-export const Route = createFileRoute("/")({
+export const Route = createFileRoute("/dashboard")({
   head: () => ({
     meta: [
       { title: "NeuroVision Lab — Learn U-Net & nnU-Net Visually" },
