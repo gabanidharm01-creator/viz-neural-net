@@ -8,6 +8,7 @@ import {
   Gauge,
   GraduationCap,
   Grid3x3,
+  Home,
   Layers,
   LayoutDashboard,
   Menu,
@@ -18,6 +19,7 @@ import {
   Workflow,
 } from "lucide-react";
 import { AiTutorPanel } from "@/components/AiTutorPanel";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { cn } from "@/lib/utils";
@@ -86,9 +88,12 @@ export function AppShell({ children }: { children: ReactNode }) {
             </span>
           </Link>
         </div>
-        <p className="hidden font-mono text-[11px] text-muted-foreground md:block">
-          Interactive U-Net &amp; nnU-Net visualization platform
-        </p>
+        <div className="flex items-center gap-2">
+          <p className="hidden font-mono text-[11px] text-muted-foreground md:block">
+            Interactive U-Net &amp; nnU-Net visualization platform
+          </p>
+          <ThemeToggle />
+        </div>
       </header>
 
       <div className="grid flex-1 grid-cols-1 lg:grid-cols-[15rem_minmax(0,1fr)] xl:grid-cols-[15rem_minmax(0,1fr)_22rem]">
