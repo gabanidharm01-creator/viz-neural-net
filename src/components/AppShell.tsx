@@ -25,8 +25,12 @@ import { cn } from "@/lib/utils";
 const NAV: { group: string; items: { to: string; label: string; icon: typeof Brain }[] }[] = [
   {
     group: "Overview",
-    items: [{ to: "/", label: "Dashboard", icon: LayoutDashboard }],
+    items: [
+      { to: "/", label: "Home", icon: Home },
+      { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
+    ],
   },
+
   {
     group: "CNN Foundations",
     items: [
